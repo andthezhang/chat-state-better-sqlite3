@@ -1,0 +1,67 @@
+{
+  "name": "chat-state-better-sqlite3",
+  "version": "0.1.0",
+  "description": "better-sqlite3 state adapter for Chat SDK",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "clean": "rm -rf dist coverage",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm test && npm run smoke:package",
+    "smoke:package": "node scripts/smoke-packed-package.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": "20.x || 22.x || 23.x || 24.x || 25.x || 26.x"
+  },
+  "peerDependencies": {
+    "chat": "^4.26.0"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.10.0"
+  },
+  "devDependencies": {
+    "@chat-adapter/tests": "^4.30.0",
+    "@types/node": "^25.9.2",
+    "chat": "^4.30.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "chat-sdk",
+    "chat-state",
+    "better-sqlite3",
+    "sqlite",
+    "state-adapter"
+  ],
+  "author": "Andy Zhang <hiandyzhang@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andthezhang/chat-state-better-sqlite3.git"
+  },
+  "homepage": "https://github.com/andthezhang/chat-state-better-sqlite3#readme",
+  "bugs": {
+    "url": "https://github.com/andthezhang/chat-state-better-sqlite3/issues"
+  }
+}
